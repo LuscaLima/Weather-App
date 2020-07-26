@@ -1,0 +1,42 @@
+html(lang="en")
+
+  include includes/head.pug
+  include includes/section-title.pug
+
+  body
+    .overlay
+      include includes/header.pug
+      
+      .content
+        .row
+          .col-6
+            +title('⛅ Do a search!')
+
+            form.content-form.d-flex
+              input(type="text" placeholder="Somewhere in mind?").form-base#search
+              button(title="Search" type="submit").form-button#go
+                img(src="/icon/search-alt.svg", alt="Search icon")
+              
+            a(title="Use my place").form-place#place Get weather in my location 📍
+
+          .col-6.d-flex
+            .display
+              .display-content
+                h1.display-header City Name
+                .display-date
+                  - const d = new Date()
+                  - const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
+                  h3.dd-day #{days[d.getDay()]}
+                  h4.dd-date #{d.toLocaleDateString()}
+                  h4.dd-wind Wind #[span];
+                  h4.dd-mois #[span]%
+                .display-weather
+                .display-temp
+
+              .display-fallback
+                h1 No places searched yet
+
+    include includes/footer.pug
+    include includes/scripts.pug
+    

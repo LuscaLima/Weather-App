@@ -1,0 +1,34 @@
+html(lang="en")
+  include includes/head.pug
+  include includes/section-title.pug
+
+  body
+    .overlay
+      include includes/header.pug
+      
+      .content
+        .row
+          .col-6
+            +title('☔ Why?')
+
+            p.text.
+              The #[i Weather App] is an application that was made to apply the concepts
+              of Node.js learning, such as queries on APIs and #[i Server Side Rendering] (SSR).
+            p.text.
+              This application consists of only two simple approaches: (i) the user
+              searches for the desired location and sends the information to the server;
+              and (ii) the server analyzes and processes the request and returns the
+              weather data, if found.
+          
+          .col-6.d-flex
+            .tools
+              .block(title="Node.js for environment")
+                img(src="./img/node_logo.svg", alt="Node.js Logo")
+              .block(title="Express.js to serve the application")
+                img(src="./img/express_logo.svg", alt="Express.js Logo")
+              .block(title="Pug for semantics and structuring")
+                img(src="./img/pug_logo.svg", alt="Pug Logo")
+              .block(title="CSS3 to make everything beautiful")
+                img(src="./img/css3_logo.svg", alt="CSS3 Logo")
+  
+    include includes/footer.pug

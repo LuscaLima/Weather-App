@@ -1,0 +1,14 @@
+html(lang="en")
+  include includes/head.pug
+
+  body
+    .overlay
+        include includes/header.pug
+        
+        .content.d-flex
+          .content-group.d-flex
+            h1.error-title I'm sorry, but there is nothing here for you
+            h3.sub-error-title Error code: 404
+            a.go-home(href="/") Go home
+
+    include includes/footer.pug
