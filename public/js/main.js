@@ -28,12 +28,19 @@ form.addEventListener("submit", async event => {
 
   console.log(weatherData)
 
-  displayContent.style.display = "block"
+  displayContent.style.display = "flex"
   displayFallback.style.display = "none"
 
   displayHeader.textContent = weatherData.location.text
   ddwind.textContent = `${weatherData.forecast.current.wind_speed}m/s`
   ddmois.textContent = weatherData.forecast.current.humidity
+  ddtemp.textContent = weatherData.forecast.current.temp
+
+  const weather = weatherData.forecast.current.weather[0]
+
+  ddimg.setAttribute("src", `/img/temp/${weather.icon}@4x.png`)
+  ddweat.textContent = weather.main
+  ddweatd.textContent = weather.description
 })
 
 search.addEventListener("input", ({ target }) => {
@@ -51,6 +58,8 @@ searchPlace.addEventListener("click", event => {
 async function getWeather(location) {
   const data = await fetch(`http://localhost:8080/api?address=${location}`)
   const parsedData = await data.json()
+
+  localStorage.setItem("term", searchTerm)
   localStorage.setItem("wacache", parsedData)
 
   return parsedData

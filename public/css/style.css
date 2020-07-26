@@ -206,10 +206,12 @@ a {
 .display {
   width: 100%;
   height: 375px;
-  padding: 20px;
+  padding: 20px 25px;
 }
 
 .display-content {
+  display: flex;
+  flex-flow: row wrap;
   width: 100%;
   height: 100%;
 }
@@ -221,9 +223,19 @@ a {
   text-transform: uppercase;
 }
 
-.display-date {
-  display: block;
+.display-date,
+.display-temp,
+.display-weather {
+  display: inline-block;
+}
+
+.display-date,
+.display-temp {
   width: 30%;
+}
+
+.display-weather {
+  width: 40%;
 }
 
 [class*="dd-"] {
@@ -238,6 +250,19 @@ a {
 .dd-date {
   font-size: 1.5em;
   text-align: justify;
+}
+
+.dd-temp {
+  font-size: 3.5em;
+  text-align: center;
+}
+
+.dd-weat {
+  font-size: 1.5em;
+}
+
+.dd-weatd {
+  text-transform: capitalize;
 }
 
 .tools .block {
