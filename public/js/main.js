@@ -36,7 +36,7 @@ form.addEventListener("submit", async event => {
   weather = weatherData.forecast.current.weather[0]
 
   /* The first value of temp is in Kelvin degrees */
-  current.temp = ((current.temp - 273.15) * 9) / 5 + 32 // Kelvin to Fahrenheit
+  current.temp = (((current.temp - 273.15) * 9) / 5 + 32).toFixed(2) // Kelvin to Fahrenheit
   unityVel(current.wind, suw.value === "ms")
   unityTemp(current.temp, sut.value === "F")
 
@@ -73,28 +73,34 @@ async function getWeather(location) {
   return parsedData
 }
 
-let unityTemp = celciusToFahrenheit
+/** Functions to manipulate the units of measurement */
 
+let unityTemp = celciusToFahrenheit // holds the current function of temperature
+
+/* Fahrenheit to Celcius */
 function fahrenheitToCelcius(fd, pass = false) {
   if (pass) return
 
   current.temp = (((fd - 32) * 5) / 9).toFixed(2)
 }
 
+/* Celcius to Fahrenheit */
 function celciusToFahrenheit(cd, pass = false) {
   if (pass) return
 
   current.temp = ((cd * 9) / 5 + 32).toFixed(2)
 }
 
-let unityVel = kmhToMs
+let unityVel = kmhToMs // holds the current function of wind speed
 
+/* m/s to km/h */
 function msToKmh(vel, pass = false) {
   if (pass) return
 
   current.wind_speed = (vel * 3.6).toFixed(2)
 }
 
+/* km/h to m/s */
 function kmhToMs(vel, pass = false) {
   if (pass) return
 
