@@ -1,6 +1,7 @@
 const sut = D.querySelector("#sut")
 const suw = D.querySelector("#suw")
 const dut = D.querySelector("#dut")
+const duw = D.querySelector("#duw")
 
 sut.addEventListener("change", ({ target }) => {
   const value = target.value.toString().toUpperCase()
@@ -10,6 +11,16 @@ sut.addEventListener("change", ({ target }) => {
 
   unityTemp(current.temp)
   ddtemp.textContent = current.temp
+})
+
+suw.addEventListener("change", ({ target }) => {
+  const value = target.value.toString()
+  duw.textContent = value === "ms" ? "m/s" : "km/h"
+
+  unityVel = value === "ms" ? kmhToMs : msToKmh
+
+  unityVel(current.wind_speed)
+  ddwind.textContent = current.wind_speed
 })
 
 const displayContent = D.querySelector(".display-content")
