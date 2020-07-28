@@ -21,6 +21,9 @@ if (!search) {
   throw new Error("The search field was not found")
 }
 
+let current = {}
+let weather = {}
+
 form.addEventListener("submit", async event => {
   event.preventDefault()
 
@@ -31,16 +34,21 @@ form.addEventListener("submit", async event => {
   displayContent.style.display = "flex"
   displayFallback.style.display = "none"
 
-  displayHeader.textContent = weatherData.location.text
-  ddwind.textContent = `${weatherData.forecast.current.wind_speed}m/s`
-  ddmois.textContent = weatherData.forecast.current.humidity
-  ddtemp.textContent = weatherData.forecast.current.temp
+  current = weatherData.forecast.current
 
-  const weather = weatherData.forecast.current.weather[0]
+  displayHeader.textContent = weatherData.location.text
+  ddwind.textContent = `${current.wind_speed}m/s`
+  ddmois.textContent = current.humidity
+
+  unityTemp(current.temp, sut.value === "F")
+  ddtemp.textContent = current.temp
+
+  weather = weatherData.forecast.current.weather[0]
 
   ddimg.setAttribute("src", `/img/temp/${weather.icon}@4x.png`)
   ddweat.textContent = weather.main
   ddweatd.textContent = weather.description
+  ddfooter.textContent = weatherData.location.place_name
 })
 
 search.addEventListener("input", ({ target }) => {
@@ -63,4 +71,18 @@ async function getWeather(location) {
   localStorage.setItem("wacache", parsedData)
 
   return parsedData
+}
+
+let unityTemp = celciusToFahrenheit
+
+function fahrenheitToCelcius(fd, pass = false) {
+  if (pass) return
+
+  current.temp = (((fd - 32) * 5) / 9).toFixed(2)
+}
+
+function celciusToFahrenheit(cd, pass = false) {
+  if (pass) return
+
+  current.temp = ((cd * 9) / 5 + 32).toFixed(2)
 }

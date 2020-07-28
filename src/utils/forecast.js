@@ -9,7 +9,7 @@ const key = process.env.OWM_KEY
  */
 
 function forecast(coords, callback) {
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=hourly,daily&appid=${key}`
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=hourly,daily&appid=${key}&units=imperial`
 
   return axios.get(url)
 }

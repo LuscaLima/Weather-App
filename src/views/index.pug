@@ -19,6 +19,16 @@ html(lang="en")
               
             a(title="Use my place").form-place#place Get weather in my location 📍
 
+            .change
+              label(for="sut") Temperature unity
+                select#sut.form-base(name="unity-temp")
+                  option(value="F" selected) Fahrenheit
+                  option(value="C") Celcius
+              label(for="suw") Wind speed unity
+                select#suw.form-base(name="unity-wspeed")
+                  option(value="ms" selected) Meters/Second
+                  option(value="kh" ) Kilometers/Hour
+
           .col-6.d-flex
             .display
               .display-content
@@ -36,10 +46,13 @@ html(lang="en")
                   h3.dd-weat &nbsp;
                   h4.dd-weatd &nbsp;
                 .display-temp
-                  h1.dd-temp #[span]°#[span]
+                  h1.dd-temp #[span]°#[span#dut F]
+                
+                .display-footer
+                  span.dd-footer &nbsp;
 
               .display-fallback
-                h1 No places searched yet
+                h1 No place searched yet 🗺
 
     include includes/footer.pug
     include includes/scripts.pug
