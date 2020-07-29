@@ -59,7 +59,7 @@ searchPlace.addEventListener("click", event => {
 /** Get the weather data from API */
 
 async function getWeather(location) {
-  const data = await fetch(`http://localhost:8080/api?address=${location}`)
+  const data = await fetch(`/api?address=${location}`)
   const parsedData = await data.json()
 
   localStorage.setItem("term", searchTerm)
