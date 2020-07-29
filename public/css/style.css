@@ -211,8 +211,7 @@ a {
   margin-top: 10px;
 }
 
-.display,
-.tools {
+.display {
   display: flex;
   flex-flow: row wrap;
   width: 450px;
@@ -318,31 +317,6 @@ a {
 .dd-weatd {
   font-size: 1.3em;
   text-transform: capitalize;
-}
-
-.tools .block {
-  display: flex;
-  width: 225px;
-  height: 225px;
-  margin: auto;
-  transition: all 0.2s ease;
-}
-
-.tools .block:hover {
-  background-color: rgba(125, 138, 146, 0.1);
-}
-
-.tools img {
-  width: auto;
-  max-width: 80%;
-  height: 110px;
-  margin: auto;
-  filter: grayscale(1);
-  transition: all 0.2s ease;
-}
-
-.tools .block:hover img {
-  filter: grayscale(0);
 }
 
 .error-title,
